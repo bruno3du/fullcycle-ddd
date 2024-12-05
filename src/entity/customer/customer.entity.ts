@@ -11,6 +11,7 @@ export default class Customer {
   private _name: string;
   private _address: Address;
   private _active = false;
+  private _rewardPoints = 0;
 
   constructor(props: CustomerProps) {
     this._id = props.id;
@@ -44,6 +45,10 @@ export default class Customer {
     return this._active;
   }
 
+  get rewardPoints(): number {
+    return this._rewardPoints;
+  }
+
   set address(address: Address) {
     this._address = address;
   }
@@ -62,5 +67,9 @@ export default class Customer {
 
   deactivate() {
     this._active = false;
+  }
+
+  addRewardPoints(points: number) {
+    this._rewardPoints += points;
   }
 }
