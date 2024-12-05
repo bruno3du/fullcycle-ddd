@@ -45,6 +45,10 @@ export default class Order {
     return this._total;
   }
 
+  get items(): OrderItem[] {
+    return this._items;
+  }
+
   calculateTotal(): number {
     return this._items.reduce((acc, item) => acc + item.orderItemTotal(), 0);
   }
