@@ -104,4 +104,24 @@ describe("Customer entity unit tests", () => {
     customer.deactivate();
     expect(customer.isActive).toBe(false);
   });
+
+  it("should add reward points", () => {
+    let customer = new Customer({
+      id: "1",
+      name: "John Doe",
+      address: new Address({
+        street: "Street",
+        number: 123,
+        zipCode: "12345",
+        city: "City",
+        state: "State",
+      }),
+    });
+
+    expect(customer.rewardPoints).toBe(0);
+    customer.addRewardPoints(10);
+    expect(customer.rewardPoints).toBe(10);
+    customer.addRewardPoints(10);
+    expect(customer.rewardPoints).toBe(20);
+  });
 });
