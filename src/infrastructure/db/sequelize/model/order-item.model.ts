@@ -21,7 +21,7 @@ export default class OrderItemModel extends Model {
   declare id: string;
 
   @Column({ allowNull: false })
-  declare name: number;
+  declare name: string;
 
   @ForeignKey(() => ProductModel)
   @Column({ allowNull: false })

@@ -45,6 +45,11 @@ export default class Order {
     return this._total;
   }
 
+  addItem(item: OrderItem) {
+    this._items.push(item);
+    this._total = this.calculateTotal();
+  }
+
   get items(): OrderItem[] {
     return this._items;
   }
