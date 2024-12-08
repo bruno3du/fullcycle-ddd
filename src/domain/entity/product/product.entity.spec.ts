@@ -1,3 +1,6 @@
+import EventDispatcher from "../../event/@shared/event-dispatcher";
+import ProductCreatedEvent from "./event/product-created.event";
+import SendEmailWhenProductIsCreatedHandler from "./handlers/send-email-when-product-is-created.handler";
 import Product from "./product.entity";
 
 describe("Product entity unit tests", () => {
@@ -69,5 +72,25 @@ describe("Product entity unit tests", () => {
 
       product.updatePrice(-1);
     }).toThrowError("Price must be greater than 0");
+  });
+
+  it("should notify when a product is created", () => {
+    const eventDispatcher = new EventDispatcher();
+    const eventHandler = new SendEmailWhenProductIsCreatedHandler();
+    const spyEventHandler = jest.spyOn(eventHandler, "handle");
+    eventDispatcher.register("ProductCreatedEvent", eventHandler);
+
+    const product = new Product({
+      id: "1",
+      name: "Product 1",
+      price: 100,
+    });
+
+    const productCreatedEvent = new ProductCreatedEvent(product);
+
+    eventDispatcher.notify(productCreatedEvent);
+
+    expect(spyEventHandler).toHaveBeenCalledTimes(1);
+    expect(spyEventHandler).toHaveBeenCalledWith(productCreatedEvent);
   });
 });
