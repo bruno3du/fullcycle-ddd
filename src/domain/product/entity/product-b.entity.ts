@@ -1,10 +1,12 @@
+import { ProductInterface } from "./product.interface";
+
 type ProductProps = {
   id: string;
   name: string;
   price: number;
 };
 
-export default class Product {
+export default class ProductB implements ProductInterface {
   private _id: string;
   private _name: string;
   private _price: number;

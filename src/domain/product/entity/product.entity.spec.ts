@@ -1,7 +1,7 @@
 import EventDispatcher from "../../@shared/event/event-dispatcher";
 import SendEmailWhenProductIsCreatedHandler from "../event/handlers/send-email-when-product-is-created.handler";
 import ProductCreatedEvent from "../event/product-created.event";
-import Product from "./product.entity";
+import Product from "./product-b.entity";
 
 describe("Product entity unit tests", () => {
   it("should throw error when id is empty", () => {

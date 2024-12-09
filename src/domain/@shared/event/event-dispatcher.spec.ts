@@ -1,4 +1,4 @@
-import Product from "../../product/entity/product.entity";
+import Product from "../../product/entity/product-b.entity";
 import SendEmailWhenProductIsCreatedHandler from "../../product/event/handlers/send-email-when-product-is-created.handler";
 import ProductCreatedEvent from "../../product/event/product-created.event";
 import EventDispatcher from "../event-dispatcher";
